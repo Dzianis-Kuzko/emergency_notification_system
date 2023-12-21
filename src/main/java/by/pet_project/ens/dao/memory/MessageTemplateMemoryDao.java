@@ -15,7 +15,7 @@ public class MessageTemplateMemoryDao implements IMessageTemplateDao {
     public MessageTemplateMemoryDao() {
         this.messageTemplates.put(1, new MessageTemplateDTO(1, "Внимание", LocalDateTime.now()));
         this.messageTemplates.put(2, new MessageTemplateDTO(2, "Осторожно", LocalDateTime.now()));
-        this.messageTemplates.put(1, new MessageTemplateDTO(1, "Тревога", LocalDateTime.now()));
+        this.messageTemplates.put(3, new MessageTemplateDTO(3, "Тревога", LocalDateTime.now()));
     }
 
     @Override
