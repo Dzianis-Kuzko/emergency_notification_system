@@ -1,4 +1,4 @@
-package by.pet_project.ens.web.api;
+package by.pet_project.ens.controller.web.servlet;
 
 import by.pet_project.ens.core.dto.RecipientDTO;
 import by.pet_project.ens.core.dto.Role;
@@ -29,9 +29,6 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-
         PrintWriter writer = resp.getWriter();
         List<UserDTO> recipients = this.userService.get();
         recipients.forEach(u -> {
@@ -43,8 +40,6 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");

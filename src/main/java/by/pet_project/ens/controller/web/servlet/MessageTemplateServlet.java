@@ -1,4 +1,4 @@
-package by.pet_project.ens.web.api;
+package by.pet_project.ens.controller.web.servlet;
 
 import by.pet_project.ens.core.dto.MessageTemplateCreateDTO;
 import by.pet_project.ens.core.dto.MessageTemplateDTO;
@@ -27,9 +27,6 @@ public class MessageTemplateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-
         PrintWriter writer = resp.getWriter();
         List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.get();
         messageTemplateDTOs.forEach(m -> {
@@ -39,9 +36,6 @@ public class MessageTemplateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-
         String text = req.getParameter(TEXT_PARAM_NAME);
 
         MessageTemplateCreateDTO messageTemplateCreateDTO = new MessageTemplateCreateDTO(text);

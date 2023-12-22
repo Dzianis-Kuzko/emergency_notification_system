@@ -1,4 +1,4 @@
-package by.pet_project.ens.web.api;
+package by.pet_project.ens.controller.web.servlet;
 
 import by.pet_project.ens.core.dto.ContactData;
 import by.pet_project.ens.core.dto.RecipientCreateDTO;
@@ -26,8 +26,6 @@ public class RecipientServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
         PrintWriter writer = resp.getWriter();
         List<RecipientDTO> recipients = this.recipientService.get();
         recipients.forEach(r -> {
@@ -39,9 +37,6 @@ public class RecipientServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
         String country = req.getParameter("country");

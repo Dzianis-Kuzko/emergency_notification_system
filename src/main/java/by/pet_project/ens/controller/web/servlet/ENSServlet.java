@@ -1,4 +1,4 @@
-package by.pet_project.ens.web.api;
+package by.pet_project.ens.controller.web.servlet;
 
 
 import jakarta.servlet.ServletException;
