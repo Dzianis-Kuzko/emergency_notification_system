@@ -1,4 +1,4 @@
-package by.pet_project.ens.web;
+package by.pet_project.ens.web.api;
 
 import by.pet_project.ens.core.dto.ContactData;
 import by.pet_project.ens.core.dto.RecipientCreateDTO;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/recipient")
+@WebServlet(urlPatterns = "/api/recipient")
 
 public class RecipientServlet extends HttpServlet {
     private final IRecipientService recipientService;

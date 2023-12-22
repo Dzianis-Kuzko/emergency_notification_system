@@ -1,4 +1,4 @@
-package by.pet_project.ens.web;
+package by.pet_project.ens.web.api;
 
 import by.pet_project.ens.core.dto.MessageTemplateCreateDTO;
 import by.pet_project.ens.core.dto.MessageTemplateDTO;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/messageTemplate")
+@WebServlet(urlPatterns = "/api/messageTemplate")
 
 public class MessageTemplateServlet extends HttpServlet {
     private static final String TEXT_PARAM_NAME = "text";

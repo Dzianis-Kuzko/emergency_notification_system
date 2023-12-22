@@ -1,4 +1,4 @@
-package by.pet_project.ens.web;
+package by.pet_project.ens.web.api;
 
 
 import jakarta.servlet.ServletException;
@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/ens")
+@WebServlet(urlPatterns = "/api/ens")
 
 public class ENSServlet extends HttpServlet {
 

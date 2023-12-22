@@ -34,7 +34,7 @@ public class UserMemoryDao implements IUserDao {
         {
             LocalDate birthday = LocalDate.of(2000, 06, 01);
             LocalDateTime regDate = LocalDateTime.now();
-            UserDTO user = new UserDTO(2, "kda", "2222", "Татьяна", "Добриденева",
+            UserDTO user = new UserDTO(3, "kda", "2222", "Татьяна", "Добриденева",
                     "Александровна", birthday, regDate, Role.USER);
             users.put(user.getId(), user);
         }
