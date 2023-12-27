@@ -35,7 +35,13 @@ public class MessageTemplateService implements IMessageTemplateService {
         dto.setId(maxCurrentId + 1);
         dto.setText(item.getText());
         dto.setDate(LocalDateTime.now());
+        dto.setCreatedByUserID(item.getCreatedByUserID());
         return this.messageTemplateDao.create(dto);
 
+    }
+
+    @Override
+    public List<MessageTemplateDTO> getUserMessages(int id) {
+        return this.messageTemplateDao.getUserMessages(id);
     }
 }

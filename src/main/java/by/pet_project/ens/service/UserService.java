@@ -41,4 +41,21 @@ public class UserService implements IUserService {
 
         return userDao.create(dto);
     }
+
+
+    @Override
+    public boolean authenticate(String login, String password) {
+        UserDTO userDTO = userDao.get(login);
+
+        if (userDTO != null && userDTO.getPassword().equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public UserDTO get(String login) {
+        return userDao.get(login);
+    }
 }

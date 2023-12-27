@@ -1,4 +1,4 @@
-package by.pet_project.ens.controller.web.servlet;
+package by.pet_project.ens.controller.web.servlet.api;
 
 import by.pet_project.ens.core.dto.ContactData;
 import by.pet_project.ens.core.dto.RecipientCreateDTO;

@@ -7,14 +7,17 @@ public class MessageTemplateDTO {
     private int id;
     private String text;
     private LocalDateTime date;
+    private int createdByUserID;
+
 
     public MessageTemplateDTO() {
     }
 
-    public MessageTemplateDTO(int id, String text, LocalDateTime date) {
+    public MessageTemplateDTO(int id, String text, LocalDateTime date, int createdByUserID) {
         this.id = id;
         this.text = text;
         this.date = date;
+        this.createdByUserID = createdByUserID;
     }
 
     public int getId() {
@@ -39,5 +42,13 @@ public class MessageTemplateDTO {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public int getCreatedByUserID() {
+        return createdByUserID;
+    }
+
+    public void setCreatedByUserID(int createdByUserID) {
+        this.createdByUserID = createdByUserID;
     }
 }

@@ -1,6 +1,5 @@
-package by.pet_project.ens.controller.web.servlet;
+package by.pet_project.ens.controller.web.servlet.api;
 
-import by.pet_project.ens.core.dto.RecipientDTO;
 import by.pet_project.ens.core.dto.Role;
 import by.pet_project.ens.core.dto.UserCreateDTO;
 import by.pet_project.ens.core.dto.UserDTO;
