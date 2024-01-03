@@ -1,7 +1,6 @@
 package by.pet_project.ens.dao.memory;
 
 import by.pet_project.ens.core.dto.MessageTemplateDTO;
-import by.pet_project.ens.core.dto.UserDTO;
 import by.pet_project.ens.dao.api.IMessageTemplateDao;
 
 import java.time.LocalDateTime;
@@ -41,7 +40,7 @@ public class MessageTemplateMemoryDao implements IMessageTemplateDao {
         List<MessageTemplateDTO> messageTemplateDTOList = new ArrayList<>();
         MessageTemplateDTO dto = null;
         for (Map.Entry<Integer, MessageTemplateDTO> entry : messageTemplates.entrySet()) {
-            if (entry.getValue().getCreatedByUserID() == id) {
+            if (entry.getValue().getCreatedByUserWithID() == id) {
                 dto = entry.getValue();
                 messageTemplateDTOList.add(dto);
             }

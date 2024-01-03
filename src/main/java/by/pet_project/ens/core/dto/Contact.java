@@ -1,21 +1,19 @@
 package by.pet_project.ens.core.dto;
 
-import java.util.Arrays;
-
-public class ContactData {
+public class Contact {
     private String phoneNumber;
     private String email;
     private String telegram;
     private String viber;
 
-    public ContactData() {
+    public Contact() {
         this.phoneNumber = "";
         this.email = "";
         this.telegram = "";
         this.viber = "";
     }
 
-    public ContactData(String phoneNumber, String email, String telegram, String viber) {
+    public Contact(String phoneNumber, String email, String telegram, String viber) {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.telegram = telegram;

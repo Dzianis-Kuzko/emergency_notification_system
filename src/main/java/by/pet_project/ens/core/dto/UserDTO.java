@@ -11,7 +11,7 @@ public class UserDTO {
     private String middleName;
     private String lastName;
     private LocalDate birthday;
-    private LocalDateTime registrationDateTime;
+    private LocalDateTime registrationTimestamp;
     private Role role;
 
     public UserDTO() {
@@ -26,7 +26,7 @@ public class UserDTO {
         this.middleName = middleName;
         this.lastName = lastName;
         this.birthday = birthday;
-        this.registrationDateTime = registrationDate;
+        this.registrationTimestamp = registrationDate;
         this.role = role;
     }
 
@@ -86,12 +86,12 @@ public class UserDTO {
         this.birthday = birthday;
     }
 
-    public LocalDateTime getRegistrationDateTime() {
-        return registrationDateTime;
+    public LocalDateTime getRegistrationTimestamp() {
+        return registrationTimestamp;
     }
 
-    public void setRegistrationDateTime(LocalDateTime registrationDateTime) {
-        this.registrationDateTime = registrationDateTime;
+    public void setRegistrationTimestamp(LocalDateTime registrationTimestamp) {
+        this.registrationTimestamp = registrationTimestamp;
     }
 
     public Role getRole() {

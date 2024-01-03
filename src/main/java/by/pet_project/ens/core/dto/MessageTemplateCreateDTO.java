@@ -2,14 +2,14 @@ package by.pet_project.ens.core.dto;
 
 public class MessageTemplateCreateDTO {
     private String text;
-    private int createdByUserID;
+    private int createdByUserWithID;
 
     public MessageTemplateCreateDTO() {
     }
 
-    public MessageTemplateCreateDTO(String text, int createdByUserID) {
+    public MessageTemplateCreateDTO(String text, int createdByUserWithID) {
         this.text = text;
-        this.createdByUserID = createdByUserID;
+        this.createdByUserWithID = createdByUserWithID;
     }
 
     public String getText() {
@@ -20,11 +20,11 @@ public class MessageTemplateCreateDTO {
         this.text = text;
     }
 
-    public int getCreatedByUserID() {
-        return createdByUserID;
+    public int getCreatedByUserWithID() {
+        return createdByUserWithID;
     }
 
-    public void setCreatedByUserID(int createdByUserID) {
-        this.createdByUserID = createdByUserID;
+    public void setCreatedByUserWithID(int createdByUserWithID) {
+        this.createdByUserWithID = createdByUserWithID;
     }
 }

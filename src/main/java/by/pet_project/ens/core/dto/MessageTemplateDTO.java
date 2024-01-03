@@ -1,23 +1,22 @@
 package by.pet_project.ens.core.dto;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class MessageTemplateDTO {
     private int id;
     private String text;
-    private LocalDateTime date;
-    private int createdByUserID;
+    private LocalDateTime creationTimestamp;
+    private int createdByUserWithID;
 
 
     public MessageTemplateDTO() {
     }
 
-    public MessageTemplateDTO(int id, String text, LocalDateTime date, int createdByUserID) {
+    public MessageTemplateDTO(int id, String text, LocalDateTime creationTimestamp, int createdByUserWithID) {
         this.id = id;
         this.text = text;
-        this.date = date;
-        this.createdByUserID = createdByUserID;
+        this.creationTimestamp = creationTimestamp;
+        this.createdByUserWithID = createdByUserWithID;
     }
 
     public int getId() {
@@ -36,19 +35,19 @@ public class MessageTemplateDTO {
         this.text = text;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getCreationTimestamp() {
+        return creationTimestamp;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setCreationTimestamp(LocalDateTime creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
     }
 
-    public int getCreatedByUserID() {
-        return createdByUserID;
+    public int getCreatedByUserWithID() {
+        return createdByUserWithID;
     }
 
-    public void setCreatedByUserID(int createdByUserID) {
-        this.createdByUserID = createdByUserID;
+    public void setCreatedByUserWithID(int createdByUserWithID) {
+        this.createdByUserWithID = createdByUserWithID;
     }
 }

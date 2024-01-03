@@ -2,7 +2,6 @@ package by.pet_project.ens.service;
 
 import by.pet_project.ens.core.dto.MessageTemplateCreateDTO;
 import by.pet_project.ens.core.dto.MessageTemplateDTO;
-import by.pet_project.ens.core.dto.RecipientDTO;
 import by.pet_project.ens.dao.api.IMessageTemplateDao;
 import by.pet_project.ens.service.api.IMessageTemplateService;
 
@@ -34,8 +33,8 @@ public class MessageTemplateService implements IMessageTemplateService {
         MessageTemplateDTO dto = new MessageTemplateDTO();
         dto.setId(maxCurrentId + 1);
         dto.setText(item.getText());
-        dto.setDate(LocalDateTime.now());
-        dto.setCreatedByUserID(item.getCreatedByUserID());
+        dto.setCreationTimestamp(LocalDateTime.now());
+        dto.setCreatedByUserWithID(item.getCreatedByUserWithID());
         return this.messageTemplateDao.create(dto);
 
     }

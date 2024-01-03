@@ -33,7 +33,7 @@ public class UserServlet extends HttpServlet {
         recipients.forEach(u -> {
             writer.write(u.getId() + ", " + u.getLogin() + ", " + u.getPassword() + ", " + u.getFirstName() + ", "
                     + u.getMiddleName() + ", " + u.getLastName() + ", " + u.getBirthday()
-                    + ", " + u.getRegistrationDateTime() + ", " + u.getRole() + "</br>");
+                    + ", " + u.getRegistrationTimestamp() + ", " + u.getRole() + "</br>");
         });
     }
 

@@ -2,23 +2,25 @@ package by.pet_project.ens.core.dto;
 
 public class RecipientDTO {
     private int id;
-    private String surname;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String country;
     private String city;
+    private Contact contact;
+    private int createdByUserWithID;
 
-    private ContactData contactData;
 
     public RecipientDTO() {
     }
 
-    public RecipientDTO(int id, String surname, String name, String country, String city, ContactData contactData) {
+    public RecipientDTO(int id, String firstName, String lastName, String country, String city, Contact contact, int createdByUserWithID) {
         this.id = id;
-        this.surname = surname;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.country = country;
         this.city = city;
-        this.contactData = contactData;
+        this.contact = contact;
+        this.createdByUserWithID = createdByUserWithID;
     }
 
     public int getId() {
@@ -29,20 +31,20 @@ public class RecipientDTO {
         this.id = id;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCountry() {
@@ -61,11 +63,19 @@ public class RecipientDTO {
         this.city = city;
     }
 
-    public ContactData getContactData() {
-        return contactData;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setContactData(ContactData contactData) {
-        this.contactData = contactData;
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public int getCreatedByUserWithID() {
+        return createdByUserWithID;
+    }
+
+    public void setCreatedByUserWithID(int createdByUserWithID) {
+        this.createdByUserWithID = createdByUserWithID;
     }
 }

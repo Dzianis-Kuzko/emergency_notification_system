@@ -37,7 +37,7 @@ public class MessageTemplateServlet extends HttpServlet {
         if(userDTO!=null){
             List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessages(userDTO.getId());
             messageTemplateDTOs.forEach(m -> {
-                writer.write(m.getId() + ", " + m.getText() + ", " + m.getDate() + m.getCreatedByUserID() + "</br>");
+                writer.write(m.getId() + ", " + m.getText() + ", " + m.getCreationTimestamp() +", "+ m.getCreatedByUserWithID() + "</br>");
             });
         }else {
             writer.write("Нет прав");

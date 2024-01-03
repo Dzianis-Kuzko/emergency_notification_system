@@ -36,7 +36,7 @@ public class UserService implements IUserService {
         dto.setMiddleName(item.getMiddleName());
         dto.setLastName(item.getLastName());
         dto.setBirthday(item.getBirthday());
-        dto.setRegistrationDateTime(LocalDateTime.now());
+        dto.setRegistrationTimestamp(LocalDateTime.now());
         dto.setRole(item.getRole());
 
         return userDao.create(dto);

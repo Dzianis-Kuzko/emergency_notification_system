@@ -30,11 +30,12 @@ public class RecipientService implements IRecipientService {
 
         RecipientDTO dto = new RecipientDTO();
         dto.setId(maxCurrentId + 1);
-        dto.setName(item.getName());
-        dto.setSurname(item.getSurname());
+        dto.setFirstName(item.getFirstName());
+        dto.setLastName(item.getLastName());
         dto.setCountry(item.getCountry());
         dto.setCity(item.getCity());
-        dto.setContactData(item.getContactData());
+        dto.setContact(item.getContact());
+        dto.setCreatedByUserWithID(item.getCreatedByUserWithID());
         return recipientDao.create(dto);
     }
 }
