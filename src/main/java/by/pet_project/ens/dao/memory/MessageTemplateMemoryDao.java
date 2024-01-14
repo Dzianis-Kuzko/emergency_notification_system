@@ -36,11 +36,11 @@ public class MessageTemplateMemoryDao implements IMessageTemplateDao {
     }
 
     @Override
-    public List<MessageTemplateDTO> getUserMessages(int id) {
+    public List<MessageTemplateDTO> getUserMessages(int createdByUserWithID) {
         List<MessageTemplateDTO> messageTemplateDTOList = new ArrayList<>();
         MessageTemplateDTO dto = null;
         for (Map.Entry<Integer, MessageTemplateDTO> entry : messageTemplates.entrySet()) {
-            if (entry.getValue().getCreatedByUserWithID() == id) {
+            if (entry.getValue().getCreatedByUserWithID() == createdByUserWithID) {
                 dto = entry.getValue();
                 messageTemplateDTOList.add(dto);
             }

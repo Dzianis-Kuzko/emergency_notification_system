@@ -28,19 +28,19 @@ public class MessageTemplateService implements IMessageTemplateService {
 
     @Override
     public MessageTemplateDTO create(MessageTemplateCreateDTO item) {
-        int maxCurrentId = this.get().stream().mapToInt(MessageTemplateDTO::getId).max().orElseThrow();
-
         MessageTemplateDTO dto = new MessageTemplateDTO();
-        dto.setId(maxCurrentId + 1);
+
+        dto.setId(-1);
         dto.setText(item.getText());
         dto.setCreationTimestamp(LocalDateTime.now());
         dto.setCreatedByUserWithID(item.getCreatedByUserWithID());
+
         return this.messageTemplateDao.create(dto);
 
     }
 
     @Override
-    public List<MessageTemplateDTO> getUserMessages(int id) {
-        return this.messageTemplateDao.getUserMessages(id);
+    public List<MessageTemplateDTO> getUserMessages(int createdByUserWithID) {
+        return this.messageTemplateDao.getUserMessages(createdByUserWithID);
     }
 }
