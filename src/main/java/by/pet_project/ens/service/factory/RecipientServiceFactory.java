@@ -1,8 +1,6 @@
 package by.pet_project.ens.service.factory;
 
-import by.pet_project.ens.dao.api.IRecipientDao;
-import by.pet_project.ens.dao.memory.RecipientMemoryDao;
-import by.pet_project.ens.dao.memory.factory.RecipientDaoFactory;
+import by.pet_project.ens.dao.factory.RecipientDaoFactory;
 import by.pet_project.ens.service.RecipientService;
 import by.pet_project.ens.service.api.IRecipientService;
 

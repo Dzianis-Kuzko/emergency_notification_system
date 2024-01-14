@@ -1,6 +1,7 @@
-package by.pet_project.ens.dao.memory.factory;
+package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IRecipientDao;
+import by.pet_project.ens.dao.db.RecipientJDBCDao;
 import by.pet_project.ens.dao.memory.RecipientMemoryDao;
 
 public class RecipientDaoFactory {
@@ -13,7 +14,7 @@ public class RecipientDaoFactory {
         if(instance==null){
             synchronized (RecipientDaoFactory.class){
                 if(instance ==null){
-                    instance = new RecipientMemoryDao();
+                    instance = new RecipientJDBCDao();
                 }
             }
         }

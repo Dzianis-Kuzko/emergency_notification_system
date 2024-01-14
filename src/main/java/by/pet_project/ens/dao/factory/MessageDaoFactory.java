@@ -1,4 +1,4 @@
-package by.pet_project.ens.dao.memory.factory;
+package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IMessageDao;
 import by.pet_project.ens.dao.memory.MessageMemoryDao;

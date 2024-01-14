@@ -1,6 +1,6 @@
 package by.pet_project.ens.service.factory;
 
-import by.pet_project.ens.dao.memory.factory.UserDaoFactory;
+import by.pet_project.ens.dao.factory.UserDaoFactory;
 import by.pet_project.ens.service.UserService;
 import by.pet_project.ens.service.api.IUserService;
 

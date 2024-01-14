@@ -7,17 +7,17 @@ public class MessageDTO {
     private int id;
     private int messageTemplateId;
     private int fromUserId;
-    private List<Integer> toUsersId;
+    private List<Integer> toRecipientsId;
     private LocalDateTime creationTimestamp;
 
     public MessageDTO() {
     }
 
-    public MessageDTO(int id, int messageTemplateId, int fromUserId, List<Integer> toUsersId, LocalDateTime creationTimestamp) {
+    public MessageDTO(int id, int messageTemplateId, int fromUserId, List<Integer> toRecipientsId, LocalDateTime creationTimestamp) {
         this.id = id;
         this.messageTemplateId = messageTemplateId;
         this.fromUserId = fromUserId;
-        this.toUsersId = toUsersId;
+        this.toRecipientsId = toRecipientsId;
         this.creationTimestamp = creationTimestamp;
     }
 
@@ -45,12 +45,12 @@ public class MessageDTO {
         this.fromUserId = fromUserId;
     }
 
-    public List<Integer> getToUsersId() {
-        return toUsersId;
+    public List<Integer> getToRecipientsId() {
+        return toRecipientsId;
     }
 
-    public void setToUsersId(List<Integer> toUsersId) {
-        this.toUsersId = toUsersId;
+    public void setToRecipientsId(List<Integer> toRecipientsId) {
+        this.toRecipientsId = toRecipientsId;
     }
 
     public LocalDateTime getCreationTimestamp() {

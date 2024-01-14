@@ -26,10 +26,8 @@ public class RecipientService implements IRecipientService {
 
     @Override
     public RecipientDTO create(RecipientCreateDTO item) {
-        int maxCurrentId = this.get().stream().mapToInt(RecipientDTO::getId).max().orElseThrow();
-
         RecipientDTO dto = new RecipientDTO();
-        dto.setId(maxCurrentId + 1);
+        dto.setId(-1); // реальное значение будет установлено в DAO !!! может нужно создать отдельное CreateDTO для DAO
         dto.setFirstName(item.getFirstName());
         dto.setLastName(item.getLastName());
         dto.setCountry(item.getCountry());

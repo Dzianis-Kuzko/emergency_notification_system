@@ -1,8 +1,6 @@
 package by.pet_project.ens.service.factory;
 
-import by.pet_project.ens.dao.api.IMessageTemplateDao;
-import by.pet_project.ens.dao.memory.MessageTemplateMemoryDao;
-import by.pet_project.ens.dao.memory.factory.MessageTemplateDaoFactory;
+import by.pet_project.ens.dao.factory.MessageTemplateDaoFactory;
 import by.pet_project.ens.service.MessageTemplateService;
 import by.pet_project.ens.service.api.IMessageTemplateService;
 

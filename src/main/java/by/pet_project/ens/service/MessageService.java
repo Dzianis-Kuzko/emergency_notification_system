@@ -33,17 +33,17 @@ public class MessageService implements IMessageService {
     @Override
     public MessageDTO create(MessageCreateDTO item) {
         int maxCurrentId = 0;
-        if(this.messageDao.get().size() !=0){
+        if (this.messageDao.get().size() != 0) {
             maxCurrentId = this.get().stream().mapToInt(MessageDTO::getId).max().orElseThrow();
         }
 
         MessageDTO dto = new MessageDTO();
-        dto.setId(maxCurrentId +1);
+        dto.setId(maxCurrentId + 1);
         dto.setMessageTemplateId(item.getMessageTemplateId());
         dto.setFromUserId(item.getFromUserId());
         dto.setCreationTimestamp(LocalDateTime.now());
 
-        dto.setToUsersId(recipientDao.getIds(item.getFromUserId()));
+        dto.setToRecipientsId(recipientDao.getIds(item.getFromUserId()));
 
         this.messageDao.create(dto);
 

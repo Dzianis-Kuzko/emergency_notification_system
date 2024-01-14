@@ -2,7 +2,6 @@ package by.pet_project.ens.controller.web.servlet.api;
 
 import by.pet_project.ens.core.dto.MessageCreateDTO;
 import by.pet_project.ens.core.dto.MessageDTO;
-import by.pet_project.ens.core.dto.MessageTemplateDTO;
 import by.pet_project.ens.core.dto.UserDTO;
 import by.pet_project.ens.service.api.IMessageService;
 import by.pet_project.ens.service.factory.MessageServiceFactory;
@@ -37,7 +36,7 @@ public class MessageServlet extends HttpServlet {
             messageDTOList.forEach(m -> {
                 writer.write(m.getId() + ", " + m.getFromUserId() + ", " + m.getCreationTimestamp() +", "+ m.getMessageTemplateId() + "</br>");
                 writer.write("[");
-                for (Integer toUserId: m.getToUsersId()){
+                for (Integer toUserId: m.getToRecipientsId()){
                     writer.write(toUserId + ", ");
                 }
                 writer.write("]");
