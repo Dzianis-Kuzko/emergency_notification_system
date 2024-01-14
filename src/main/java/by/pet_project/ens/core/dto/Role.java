@@ -1,14 +1,23 @@
 package by.pet_project.ens.core.dto;
 
 public enum Role {
-    ADMIN("ADMIN"), USER("USER");
+    ADMIN(1), USER(2);
+    private final int role_id;
 
-    private final String name;
-    Role(String name) {
-        this.name = name;
+    Role(int role_id) {
+        this.role_id = role_id;
     }
 
-    public String getName() {
-        return name;
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public static Role fromRoleId(int role_id) {
+        for (Role role : Role.values()) {
+            if (role.getRole_id() == role_id) {
+                return role;
+            }
+        }
+        return null;
     }
 }

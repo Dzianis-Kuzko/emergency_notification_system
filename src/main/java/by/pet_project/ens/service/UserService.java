@@ -27,9 +27,8 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO create(UserCreateDTO item) {
-        int maxCurrentId = this.get().stream().mapToInt(UserDTO::getId).max().orElseThrow();
         UserDTO dto = new UserDTO();
-        dto.setId(maxCurrentId + 1);
+        dto.setId(-1);
         dto.setLogin(item.getLogin());
         dto.setPassword(item.getPassword());
         dto.setFirstName(item.getFirstName());
@@ -41,7 +40,6 @@ public class UserService implements IUserService {
 
         return userDao.create(dto);
     }
-
 
     @Override
     public boolean authenticate(String login, String password) {
