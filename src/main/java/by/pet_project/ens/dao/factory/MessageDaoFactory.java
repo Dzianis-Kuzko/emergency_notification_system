@@ -1,6 +1,7 @@
 package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IMessageDao;
+import by.pet_project.ens.dao.db.MessageJDBCDao;
 import by.pet_project.ens.dao.memory.MessageMemoryDao;
 
 public class MessageDaoFactory {
@@ -13,7 +14,7 @@ public class MessageDaoFactory {
         if (instance == null) {
             synchronized (MessageDaoFactory.class) {
                 if (instance == null) {
-                    instance = new MessageMemoryDao();
+                    instance = new MessageJDBCDao();
                 }
             }
         }

@@ -124,23 +124,14 @@ public class RecipientJDBCDao implements IRecipientDao {
         List<Integer> idList = new ArrayList<>();
         try (Connection connection = DataBaseConnectionFactory.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, " +
-                             "first_name, " +
-                             "last_name, " +
-                             "country, " +
-                             "city, " +
-                             "created_by_user_with_id, " +
-                             "phone_number, " +
-                             "email, " +
-                             "telegram, " +
-                             "viber " +
-                             "FROM app.recipients" +
-                             "WHERE id = ?;")) {
+                     "SELECT id " +
+                             "FROM app.recipients " +
+                             "WHERE created_by_user_with_id = ?;")) {
 
             preparedStatement.setInt(1, createdByUserWithID);
 
             try (ResultSet rs = preparedStatement.executeQuery()) {
-                if (rs.next()) {
+                while (rs.next()) {
                     idList.add(rs.getInt("id"));
                 }
             }

@@ -39,7 +39,7 @@ public class MessageServlet extends HttpServlet {
                 for (Integer toUserId: m.getToRecipientsId()){
                     writer.write(toUserId + ", ");
                 }
-                writer.write("]");
+                writer.write("]" + "</br>");
             });
         }else {
             writer.write("Нет прав");
