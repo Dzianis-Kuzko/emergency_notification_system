@@ -5,6 +5,8 @@ import by.pet_project.ens.core.dto.MessageTemplateDTO;
 import by.pet_project.ens.core.dto.UserDTO;
 import by.pet_project.ens.service.api.IMessageTemplateService;
 import by.pet_project.ens.service.factory.MessageTemplateServiceFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,12 +21,14 @@ import java.util.List;
 @WebServlet(urlPatterns = "/api/messageTemplate")
 
 public class MessageTemplateServlet extends HttpServlet {
-    private static final String TEXT_PARAM_NAME = "text";
-
     private final IMessageTemplateService messageTemplateService;
+    private ObjectMapper objectMapper;
+
 
     public MessageTemplateServlet() {
         this.messageTemplateService = MessageTemplateServiceFactory.getInstance();
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
     }
 
     @Override
@@ -34,12 +38,10 @@ public class MessageTemplateServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        if(userDTO!=null){
+        if (userDTO != null) {
             List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessages(userDTO.getId());
-            messageTemplateDTOs.forEach(m -> {
-                writer.write(m.getId() + ", " + m.getText() + ", " + m.getCreationTimestamp() +", "+ m.getCreatedByUserWithID() + "</br>");
-            });
-        }else {
+            writer.write(objectMapper.writeValueAsString(messageTemplateDTOs));
+        } else {
             writer.write("Нет прав");
         }
 
@@ -47,11 +49,12 @@ public class MessageTemplateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String text = req.getParameter(TEXT_PARAM_NAME);
         HttpSession session = req.getSession();
         UserDTO userDTO = (UserDTO) session.getAttribute("user");
 
-        MessageTemplateCreateDTO messageTemplateCreateDTO = new MessageTemplateCreateDTO(text, userDTO.getId());
+        MessageTemplateCreateDTO messageTemplateCreateDTO = objectMapper.readValue(req.getInputStream(), MessageTemplateCreateDTO.class);
+
+        messageTemplateCreateDTO.setCreatedByUserWithID(userDTO.getId());
 
         messageTemplateService.create(messageTemplateCreateDTO);
     }

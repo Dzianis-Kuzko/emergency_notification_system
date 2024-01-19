@@ -5,6 +5,8 @@ import by.pet_project.ens.core.dto.MessageDTO;
 import by.pet_project.ens.core.dto.UserDTO;
 import by.pet_project.ens.service.api.IMessageService;
 import by.pet_project.ens.service.factory.MessageServiceFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,9 +21,12 @@ import java.util.List;
 @WebServlet(urlPatterns = "/api/message")
 public class MessageServlet extends HttpServlet {
     private final IMessageService messageService;
+    private ObjectMapper objectMapper;
 
     public MessageServlet() {
         this.messageService = MessageServiceFactory.getInstance();
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
     }
 
     @Override
@@ -31,17 +36,10 @@ public class MessageServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        if(userDTO!=null){
+        if (userDTO != null) {
             List<MessageDTO> messageDTOList = messageService.get();
-            messageDTOList.forEach(m -> {
-                writer.write(m.getId() + ", " + m.getFromUserId() + ", " + m.getCreationTimestamp() +", "+ m.getMessageTemplateId() + "</br>");
-                writer.write("[");
-                for (Integer toUserId: m.getToRecipientsId()){
-                    writer.write(toUserId + ", ");
-                }
-                writer.write("]" + "</br>");
-            });
-        }else {
+            writer.write(objectMapper.writeValueAsString(messageDTOList));
+        } else {
             writer.write("Нет прав");
         }
 
@@ -49,11 +47,11 @@ public class MessageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int messageTemplateId = Integer.parseInt(req.getParameter("messageTemplateId"));
         HttpSession session = req.getSession();
-        int fromUserId = ((UserDTO)session.getAttribute("user")).getId();
+        int fromUserId = ((UserDTO) session.getAttribute("user")).getId();
 
-        MessageCreateDTO messageCreateDTO = new MessageCreateDTO(messageTemplateId,fromUserId);
+        MessageCreateDTO messageCreateDTO = objectMapper.readValue(req.getInputStream(), MessageCreateDTO.class);
+        messageCreateDTO.setFromUserId(fromUserId);
         messageService.create(messageCreateDTO);
     }
 }

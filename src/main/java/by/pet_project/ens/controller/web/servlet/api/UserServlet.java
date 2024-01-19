@@ -1,10 +1,11 @@
 package by.pet_project.ens.controller.web.servlet.api;
 
-import by.pet_project.ens.core.dto.Role;
 import by.pet_project.ens.core.dto.UserCreateDTO;
 import by.pet_project.ens.core.dto.UserDTO;
 import by.pet_project.ens.service.api.IUserService;
 import by.pet_project.ens.service.factory.UserServiceFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/api/user")
@@ -21,34 +21,25 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     private final IUserService userService;
+    private ObjectMapper objectMapper;
 
     public UserServlet() {
         this.userService = UserServiceFactory.getInstance();
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        List<UserDTO> recipients = this.userService.get();
-        recipients.forEach(u -> {
-            writer.write(u.getId() + ", " + u.getLogin() + ", " + u.getPassword() + ", " + u.getFirstName() + ", "
-                    + u.getMiddleName() + ", " + u.getLastName() + ", " + u.getBirthday()
-                    + ", " + u.getRegistrationTimestamp() + ", " + u.getRole() + "</br>");
-        });
+        List<UserDTO> userDTOS = this.userService.get();
+        writer.write(objectMapper.writeValueAsString(userDTOS));
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserCreateDTO dto = this.objectMapper.readValue(req.getInputStream(), UserCreateDTO.class);
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String firstName = req.getParameter("firstName");
-        String middleName = req.getParameter("middleName");
-        String lastName = req.getParameter("lastName");
-        LocalDate birthday = LocalDate.parse(req.getParameter("birthday"));
-        Role role = Role.valueOf(req.getParameter("role"));
-
-        UserCreateDTO dto = new UserCreateDTO(login, password, firstName, middleName, lastName, birthday, role);
         this.userService.create(dto);
     }
 }
