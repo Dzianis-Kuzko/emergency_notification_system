@@ -21,7 +21,7 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     private final IUserService userService;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     public UserServlet() {
         this.userService = UserServiceFactory.getInstance();

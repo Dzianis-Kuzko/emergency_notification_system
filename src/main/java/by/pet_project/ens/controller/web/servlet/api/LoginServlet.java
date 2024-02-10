@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     private static final String PASSWORD_PARAM_NAME = "password";
     private static final String SESSION_ATTRIBUTE_NAME = "user";
     private final IUserService userService;
-    private ObjectMapper objectMapper;
+    private  final ObjectMapper objectMapper;
 
     public LoginServlet() {
         this.userService = UserServiceFactory.getInstance();

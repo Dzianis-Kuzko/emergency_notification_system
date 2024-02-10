@@ -21,7 +21,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "/api/message")
 public class MessageServlet extends HttpServlet {
     private final IMessageService messageService;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     public MessageServlet() {
         this.messageService = MessageServiceFactory.getInstance();

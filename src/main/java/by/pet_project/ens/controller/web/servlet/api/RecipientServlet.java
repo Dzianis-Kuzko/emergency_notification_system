@@ -21,7 +21,7 @@ import java.util.List;
 
 public class RecipientServlet extends HttpServlet {
     private final IRecipientService recipientService;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     public RecipientServlet() {
         this.recipientService = RecipientServiceFactory.getInstance();

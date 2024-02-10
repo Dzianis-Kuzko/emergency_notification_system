@@ -21,8 +21,9 @@ import java.util.List;
 @WebServlet(urlPatterns = "/api/messageTemplate")
 
 public class MessageTemplateServlet extends HttpServlet {
+    private static final String SESSION_ATTRIBUTE_NAME = "user";
     private final IMessageTemplateService messageTemplateService;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
 
     public MessageTemplateServlet() {
@@ -34,23 +35,18 @@ public class MessageTemplateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UserDTO userDTO = (UserDTO) session.getAttribute("user");
+        UserDTO userDTO = (UserDTO) session.getAttribute(SESSION_ATTRIBUTE_NAME);
 
         PrintWriter writer = resp.getWriter();
 
-        if (userDTO != null) {
-            List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessages(userDTO.getId());
-            writer.write(objectMapper.writeValueAsString(messageTemplateDTOs));
-        } else {
-            writer.write("Нет прав");
-        }
-
+        List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessages(userDTO.getId());
+        writer.write(objectMapper.writeValueAsString(messageTemplateDTOs));
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UserDTO userDTO = (UserDTO) session.getAttribute("user");
+        UserDTO userDTO = (UserDTO) session.getAttribute(SESSION_ATTRIBUTE_NAME);
 
         MessageTemplateCreateDTO messageTemplateCreateDTO = objectMapper.readValue(req.getInputStream(), MessageTemplateCreateDTO.class);
 
