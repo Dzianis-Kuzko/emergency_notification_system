@@ -39,7 +39,7 @@ public class MessageTemplateServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessages(userDTO.getId());
+        List<MessageTemplateDTO> messageTemplateDTOs = messageTemplateService.getUserMessageTemplates(userDTO.getId());
         writer.write(objectMapper.writeValueAsString(messageTemplateDTOs));
     }
 

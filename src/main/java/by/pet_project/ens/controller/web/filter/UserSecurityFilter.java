@@ -25,7 +25,7 @@ public class UserSecurityFilter implements Filter {
         if ((session != null) && (session.getAttribute(SESSION_ATTRIBUTE_NAME) != null)) {
             chain.doFilter(request, response);
         } else {
-            res.sendError(403);
+            res.sendError(401);
         }
     }
 }

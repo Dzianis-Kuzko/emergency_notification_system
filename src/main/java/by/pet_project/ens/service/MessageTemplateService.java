@@ -30,7 +30,6 @@ public class MessageTemplateService implements IMessageTemplateService {
     public MessageTemplateDTO create(MessageTemplateCreateDTO item) {
         MessageTemplateDTO dto = new MessageTemplateDTO();
 
-        dto.setId(-1);
         dto.setText(item.getText());
         dto.setCreationTimestamp(LocalDateTime.now());
         dto.setCreatedByUserWithID(item.getCreatedByUserWithID());
@@ -40,7 +39,7 @@ public class MessageTemplateService implements IMessageTemplateService {
     }
 
     @Override
-    public List<MessageTemplateDTO> getUserMessages(int createdByUserWithID) {
-        return this.messageTemplateDao.getUserMessages(createdByUserWithID);
+    public List<MessageTemplateDTO> getUserMessageTemplates(int createdByUserWithID) {
+        return this.messageTemplateDao.getUserMessageTemplates(createdByUserWithID);
     }
 }

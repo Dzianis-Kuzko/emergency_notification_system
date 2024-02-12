@@ -2,7 +2,6 @@ package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IMessageTemplateDao;
 import by.pet_project.ens.dao.db.MessageTemplateJDBCDao;
-import by.pet_project.ens.dao.memory.MessageTemplateMemoryDao;
 
 public class MessageTemplateDaoFactory {
     private static volatile IMessageTemplateDao instance;
@@ -10,10 +9,10 @@ public class MessageTemplateDaoFactory {
     private MessageTemplateDaoFactory() {
     }
 
-    public static IMessageTemplateDao getInstance(){
-        if(instance==null){
-            synchronized (MessageTemplateDaoFactory.class){
-                if(instance ==null){
+    public static IMessageTemplateDao getInstance() {
+        if (instance == null) {
+            synchronized (MessageTemplateDaoFactory.class) {
+                if (instance == null) {
                     instance = new MessageTemplateJDBCDao();
                 }
             }

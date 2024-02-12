@@ -2,7 +2,6 @@ package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IMessageDao;
 import by.pet_project.ens.dao.db.MessageJDBCDao;
-import by.pet_project.ens.dao.memory.MessageMemoryDao;
 
 public class MessageDaoFactory {
     private static volatile IMessageDao instance;

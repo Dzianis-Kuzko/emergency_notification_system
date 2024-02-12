@@ -143,6 +143,40 @@ public class RecipientJDBCDao implements IRecipientDao {
         return idList;
     }
 
+    @Override
+    public List<RecipientDTO> getUserRecipients(int createdByUserWithID) {
+        List<RecipientDTO> recipientDTOList = new ArrayList<>();
+        try (Connection connection = DataBaseConnectionFactory.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "SELECT id, " +
+                             "first_name, " +
+                             "last_name, " +
+                             "country, " +
+                             "city, " +
+                             "created_by_user_with_id, " +
+                             "phone_number, " +
+                             "email, " +
+                             "telegram, " +
+                             "viber " +
+                             "FROM app.recipients " +
+                             "WHERE created_by_user_with_id=?;")) {
+
+            preparedStatement.setInt(1, createdByUserWithID);
+
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    RecipientDTO recipientDTO = initializeRecipient(rs);
+                    recipientDTOList.add(recipientDTO);
+                }
+            }
+        } catch (SQLException e) {
+            throw new AccessDataException("Ошибка подключения к базе данных", e);
+        }
+
+        return recipientDTOList;
+    }
+
+
     private static RecipientDTO initializeRecipient(ResultSet rs) throws SQLException {
         RecipientDTO recipientDTO = new RecipientDTO();
         recipientDTO.setId(rs.getInt("id"));

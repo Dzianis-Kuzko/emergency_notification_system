@@ -5,5 +5,5 @@ import by.pet_project.ens.core.dto.MessageTemplateDTO;
 import java.util.List;
 
 public interface IMessageTemplateDao extends ICRUDDao <MessageTemplateDTO> {
-    List<MessageTemplateDTO> getUserMessages(int createdByUserWithID);
+    List<MessageTemplateDTO> getUserMessageTemplates(int createdByUserWithID);
 }

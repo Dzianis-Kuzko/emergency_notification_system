@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IRecipientDao extends ICRUDDao<RecipientDTO> {
     List<Integer> getIds(int createdByUserWithID);
+    List<RecipientDTO> getUserRecipients(int createdByUserWithID);
 
 
 }

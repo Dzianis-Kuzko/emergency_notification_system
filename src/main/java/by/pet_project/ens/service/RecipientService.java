@@ -27,7 +27,6 @@ public class RecipientService implements IRecipientService {
     @Override
     public RecipientDTO create(RecipientCreateDTO item) {
         RecipientDTO dto = new RecipientDTO();
-        dto.setId(-1); // реальное значение будет установлено в DAO !!! может нужно создать отдельное CreateDTO для DAO
         dto.setFirstName(item.getFirstName());
         dto.setLastName(item.getLastName());
         dto.setCountry(item.getCountry());
@@ -35,5 +34,10 @@ public class RecipientService implements IRecipientService {
         dto.setContact(item.getContact());
         dto.setCreatedByUserWithID(item.getCreatedByUserWithID());
         return recipientDao.create(dto);
+    }
+
+    @Override
+    public List<RecipientDTO> getUserRecipients(int createdByUserWithID) {
+        return this.recipientDao.getUserRecipients(createdByUserWithID);
     }
 }

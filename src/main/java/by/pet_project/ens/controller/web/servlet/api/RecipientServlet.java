@@ -20,6 +20,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "/api/recipient")
 
 public class RecipientServlet extends HttpServlet {
+    private static final String SESSION_ATTRIBUTE_NAME = "user";
     private final IRecipientService recipientService;
     private final ObjectMapper objectMapper;
 
@@ -30,19 +31,26 @@ public class RecipientServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        UserDTO userDTO = (UserDTO) session.getAttribute(SESSION_ATTRIBUTE_NAME);
+
         PrintWriter writer = resp.getWriter();
-        List<RecipientDTO> recipients = this.recipientService.get();
+
+        List<RecipientDTO> recipients = this.recipientService.getUserRecipients(userDTO.getId());
+
         writer.write(objectMapper.writeValueAsString(recipients));
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
-        UserDTO userDTO = (UserDTO) session.getAttribute("user");
+        UserDTO userDTO = (UserDTO) session.getAttribute(SESSION_ATTRIBUTE_NAME);
+
         RecipientCreateDTO dto = objectMapper.readValue(req.getInputStream(), RecipientCreateDTO.class);
+
         dto.setCreatedByUserWithID(userDTO.getId());
+
         this.recipientService.create(dto);
 
     }

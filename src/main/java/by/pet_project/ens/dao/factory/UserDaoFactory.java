@@ -2,7 +2,6 @@ package by.pet_project.ens.dao.factory;
 
 import by.pet_project.ens.dao.api.IUserDao;
 import by.pet_project.ens.dao.db.UserJDBCDao;
-import by.pet_project.ens.dao.memory.UserMemoryDao;
 
 public class UserDaoFactory {
     private static volatile IUserDao instance;

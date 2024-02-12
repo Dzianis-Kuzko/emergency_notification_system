@@ -87,16 +87,14 @@ public class MessageTemplateJDBCDao implements IMessageTemplateDao {
                     item.setId(rs.getInt("id"));
                 }
             }
-
-        } catch (
-                SQLException e) {
+        } catch (SQLException e) {
             throw new AccessDataException("Ошибка подключения к базе данных", e);
         }
         return item;
     }
 
     @Override
-    public List<MessageTemplateDTO> getUserMessages(int createdByUserWithID) {
+    public List<MessageTemplateDTO> getUserMessageTemplates(int createdByUserWithID) {
         List<MessageTemplateDTO> messageTemplateDTOList = new ArrayList<>();
 
         try (Connection connection = DataBaseConnectionFactory.getConnection();

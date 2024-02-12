@@ -6,5 +6,5 @@ import by.pet_project.ens.core.dto.MessageTemplateDTO;
 import java.util.List;
 
 public interface IMessageTemplateService extends ICRUDService<MessageTemplateDTO, MessageTemplateCreateDTO> {
-    List<MessageTemplateDTO> getUserMessages(int createdByUserWithID);
+    List<MessageTemplateDTO> getUserMessageTemplates(int createdByUserWithID);
 }
