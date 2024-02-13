@@ -28,7 +28,6 @@ public class UserService implements IUserService {
     @Override
     public UserDTO create(UserCreateDTO item) {
         UserDTO dto = new UserDTO();
-        dto.setId(-1);
         dto.setLogin(item.getLogin());
         dto.setPassword(item.getPassword());
         dto.setFirstName(item.getFirstName());

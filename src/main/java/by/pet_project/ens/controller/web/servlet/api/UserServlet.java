@@ -39,7 +39,6 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCreateDTO dto = this.objectMapper.readValue(req.getInputStream(), UserCreateDTO.class);
-
         this.userService.create(dto);
     }
 }
